@@ -1,4 +1,4 @@
-.add-values {
+.box {
   display: flex;
   flex-direction: column;
   background: rgba(169, 112, 218, 0.5);
@@ -34,8 +34,48 @@
 
 .title-values {
   text-align: center;
-  margin: -10px;
+  margin: 0px;
   font-size: 32px;
   font-weight: bold;
   color: #000000;
+}
+
+.title-add {
+  text-align: center;
+  margin: 0px;
+  margin-bottom: 16px;
+  font-size: 32px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.list-item {
+  display: flex;
+  gap: 4px;
+}
+
+.list-item:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.item-text {
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin: 0px;
+  border-radius: 5px;
+  background-color: rgba(54, 7, 95, 1);
+  border: none;
+  color: rgba(255, 255, 255, 1);
+  text-align: left;
+}
+
+#first-item {
+  width: 100%;
 }
