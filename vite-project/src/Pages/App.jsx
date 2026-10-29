@@ -1,15 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../CSS/App.css";
 import Earns from "../Components/Earns.jsx";
 import Spends from "../Components/Spends.jsx";
 
 function App() {
-  const [values, setValues] = useState([
-    { id: 1, origin: "Salary", value: 5000, type: "earn" },
-    { id: 2, origin: "Freelance", value: 2000, type: "earn" },
-    { id: 3, origin: "Supermarket", value: 1000, type: "spend" },
-  ]);
-  const [selected, setSelected] = useState("earn");
+  const [values, setValues] = useState(
+    JSON.parse(localStorage.getItem("values")) || [],
+  );
+
+  useEffect(() => {
+    localStorage.setItem("values", JSON.stringify(values));
+  }, [values]);
+
+  const [selected, setSelected] = useState(
+    JSON.parse(localStorage.getItem("selected")) || "earn",
+  );
+
+  useEffect(() => {
+    localStorage.setItem("selected", JSON.stringify(selected));
+  }, [selected]);
 
   function onChangeSelectedClick(selected) {
     var newSelected;
