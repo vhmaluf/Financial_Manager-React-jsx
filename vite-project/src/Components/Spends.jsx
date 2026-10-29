@@ -4,7 +4,7 @@ import ShowSpends from "./ShowSpends.jsx";
 function Spends(props) {
   return (
     <>
-      <AddSpends />
+      <AddSpends onAddValueClick={props.onAddValueClick} />
       <ShowSpends values={props.values} />
     </>
   );

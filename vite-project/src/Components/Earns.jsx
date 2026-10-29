@@ -4,7 +4,7 @@ import ShowEarns from "./ShowEarns.jsx";
 function Earns(props) {
   return (
     <>
-      <AddEarns />
+      <AddEarns onAddValueClick={props.onAddValueClick} />
       <ShowEarns values={props.values} />
     </>
   );

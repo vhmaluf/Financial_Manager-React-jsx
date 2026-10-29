@@ -7,7 +7,7 @@ function ShowEarns(props) {
       <ul className="list">
         {props.values.map(
           (value) =>
-            !value.spend && (
+            value.type === "earn" && (
               <li key={value.id} className="list-item">
                 <p className="item-text" id="first-item">
                   {value.origin}

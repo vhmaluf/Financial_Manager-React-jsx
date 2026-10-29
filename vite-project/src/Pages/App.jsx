@@ -5,11 +5,11 @@ import Spends from "../Components/Spends.jsx";
 
 function App() {
   const [values, setValues] = useState([
-    { id: 1, origin: "Salary", value: 5000, spend: false },
-    { id: 2, origin: "Freelance", value: 2000, spend: false },
-    { id: 3, origin: "Supermarket", value: 1000, spend: true },
+    { id: 1, origin: "Salary", value: 5000, type: "earn" },
+    { id: 2, origin: "Freelance", value: 2000, type: "earn" },
+    { id: 3, origin: "Supermarket", value: 1000, type: "spend" },
   ]);
-  const [selected, setSelected] = useState("spend");
+  const [selected, setSelected] = useState("earn");
 
   function onChangeSelectedClick(selected) {
     var newSelected;
@@ -19,6 +19,16 @@ function App() {
       newSelected = "spend";
     }
     setSelected(newSelected);
+  }
+
+  function onAddValueClick(origin, value, type) {
+    const addValue = {
+      id: values.length > 0 ? values[values.length - 1].id + 1 : 1,
+      origin: origin,
+      value: value,
+      type: type,
+    };
+    setValues([...values, addValue]);
   }
 
   return (
@@ -41,9 +51,9 @@ function App() {
           </button>
         </div>
         {selected === "earn" ? (
-          <Earns values={values} />
+          <Earns values={values} onAddValueClick={onAddValueClick} />
         ) : (
-          <Spends values={values} />
+          <Spends values={values} onAddValueClick={onAddValueClick} />
         )}
       </div>
     </div>

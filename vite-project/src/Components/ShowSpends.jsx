@@ -7,7 +7,7 @@ function ShowSpends(props) {
       <ul className="list">
         {props.values.map(
           (value) =>
-            value.spend && (
+            value.type === "spend" && (
               <li key={value.id} className="list-item">
                 <p className="item-text" id="first-item">
                   {value.origin}
