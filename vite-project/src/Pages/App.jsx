@@ -4,13 +4,13 @@ import Earns from "../Components/Earns.jsx";
 import Spends from "../Components/Spends.jsx";
 
 function App() {
-  const [values, setValues] = useState(
-    JSON.parse(localStorage.getItem("values")) || [],
+  const [items, setItems] = useState(
+    JSON.parse(localStorage.getItem("item")) || [],
   );
 
   useEffect(() => {
-    localStorage.setItem("values", JSON.stringify(values));
-  }, [values]);
+    localStorage.setItem("item", JSON.stringify(items));
+  }, [items]);
 
   const [selected, setSelected] = useState(
     JSON.parse(localStorage.getItem("selected")) || "earn",
@@ -32,12 +32,17 @@ function App() {
 
   function onAddValueClick(origin, value, type) {
     const addValue = {
-      id: values.length > 0 ? values[values.length - 1].id + 1 : 1,
+      id: items.length > 0 ? items[items.length - 1].id + 1 : 1,
       origin: origin,
       value: value,
       type: type,
     };
-    setValues([...values, addValue]);
+    setItems([...items, addValue]);
+  }
+
+  function onDeleteValueClick(itemId) {
+    const updatedItems = items.filter((item) => item.id != itemId);
+    setItems(updatedItems);
   }
 
   return (
@@ -60,9 +65,17 @@ function App() {
           </button>
         </div>
         {selected === "earn" ? (
-          <Earns values={values} onAddValueClick={onAddValueClick} />
+          <Earns
+            items={items}
+            onAddValueClick={onAddValueClick}
+            onDeleteValueClick={onDeleteValueClick}
+          />
         ) : (
-          <Spends values={values} onAddValueClick={onAddValueClick} />
+          <Spends
+            items={items}
+            onAddValueClick={onAddValueClick}
+            onDeleteValueClick={onDeleteValueClick}
+          />
         )}
       </div>
     </div>

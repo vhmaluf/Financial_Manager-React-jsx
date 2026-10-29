@@ -5,7 +5,10 @@ function Spends(props) {
   return (
     <>
       <AddSpends onAddValueClick={props.onAddValueClick} />
-      <ShowSpends values={props.values} />
+      <ShowSpends
+        items={props.items}
+        onDeleteValueClick={props.onDeleteValueClick}
+      />
     </>
   );
 }

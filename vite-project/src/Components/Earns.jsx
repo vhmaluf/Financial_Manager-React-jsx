@@ -5,7 +5,10 @@ function Earns(props) {
   return (
     <>
       <AddEarns onAddValueClick={props.onAddValueClick} />
-      <ShowEarns values={props.values} />
+      <ShowEarns
+        items={props.items}
+        onDeleteValueClick={props.onDeleteValueClick}
+      />
     </>
   );
 }
