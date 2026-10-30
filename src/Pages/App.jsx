@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "../CSS/App.css";
-import Earns from "../Components/Earns.jsx";
-import Spends from "../Components/Spends.jsx";
+import Incomes from "../Components/Incomes.jsx";
+import Expenses from "../Components/Expenses.jsx";
 
 function App() {
   const [items, setItems] = useState(
@@ -13,7 +13,7 @@ function App() {
   }, [items]);
 
   const [selected, setSelected] = useState(
-    JSON.parse(localStorage.getItem("selected")) || "earn",
+    JSON.parse(localStorage.getItem("selected")) || "income",
   );
 
   useEffect(() => {
@@ -22,10 +22,10 @@ function App() {
 
   function onChangeSelectedClick(selected) {
     var newSelected;
-    if (selected === "earn") {
-      newSelected = "earn";
+    if (selected === "income") {
+      newSelected = "income";
     } else {
-      newSelected = "spend";
+      newSelected = "expense";
     }
     setSelected(newSelected);
   }
@@ -51,27 +51,27 @@ function App() {
         <h1 className="title">Financial Manager</h1>
         <div className="button-container">
           <button
-            onClick={() => onChangeSelectedClick("earn")}
-            className={`button-page ${selected === "earn" ? "selected" : ""}`}
+            onClick={() => onChangeSelectedClick("income")}
+            className={`button-page ${selected === "income" ? "selected" : ""}`}
             id="first-button"
           >
-            Earn
+            Income
           </button>
           <button
-            onClick={() => onChangeSelectedClick("spend")}
-            className={`button-page ${selected === "spend" ? "selected" : ""}`}
+            onClick={() => onChangeSelectedClick("expense")}
+            className={`button-page ${selected === "expense" ? "selected" : ""}`}
           >
-            Spend
+            Expense
           </button>
         </div>
-        {selected === "earn" ? (
-          <Earns
+        {selected === "income" ? (
+          <Incomes
             items={items}
             onAddValueClick={onAddValueClick}
             onDeleteValueClick={onDeleteValueClick}
           />
         ) : (
-          <Spends
+          <Expenses
             items={items}
             onAddValueClick={onAddValueClick}
             onDeleteValueClick={onDeleteValueClick}
