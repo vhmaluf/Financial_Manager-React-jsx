@@ -1,14 +1,14 @@
 import "../CSS/Values.css";
 import { Trash } from "lucide-react";
 
-function ShowSpends(props) {
+function ShowExpenses(props) {
   return (
     <div className="box">
-      <h2 className="title-values">Spends</h2>
+      <h2 className="title-values">Expenses</h2>
       <ul className="list">
         {props.items.map(
           (value) =>
-            value.type == "spend" && (
+            value.type == "expense" && (
               <li key={value.id} className="list-item">
                 <p className="item-text" id="first-item">
                   {value.origin}
@@ -30,4 +30,4 @@ function ShowSpends(props) {
   );
 }
 
-export default ShowSpends;
+export default ShowExpenses;

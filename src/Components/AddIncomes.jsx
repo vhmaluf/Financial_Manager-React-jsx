@@ -1,23 +1,23 @@
 import "../CSS/Values.css";
 import { useState } from "react";
 
-function AddSpends(props) {
+function AddIncomes(props) {
   const [origin, setOrigin] = useState("");
   const [value, setValue] = useState("");
 
   return (
     <div className="box">
-      <h2 className="title-add">Add Spends</h2>
+      <h2 className="title-add">Add Incomes</h2>
       <input
         type="text"
-        placeholder="Spend Origin"
+        placeholder="Income Origin"
         id="add-origin"
         className="input-field"
         onChange={(e) => setOrigin(e.target.value)}
       ></input>
       <input
         type="text"
-        placeholder="Spend Value"
+        placeholder="Income Value"
         id="add-value"
         className="input-field"
         onChange={(e) => setValue(e.target.value)}
@@ -31,7 +31,7 @@ function AddSpends(props) {
           if (isNaN(value)) {
             return alert("Please enter a valid number for the value.");
           }
-          props.onAddValueClick(origin, value, "spend");
+          props.onAddValueClick(origin, value, "income");
           setOrigin("");
           document.getElementById("add-origin").value = "";
           setValue("");
@@ -44,4 +44,4 @@ function AddSpends(props) {
   );
 }
 
-export default AddSpends;
+export default AddIncomes;

@@ -1,14 +1,14 @@
 import "../CSS/Values.css";
 import { Trash } from "lucide-react";
 
-function ShowEarns(props) {
+function ShowIncomes(props) {
   return (
     <div className="box">
-      <h2 className="title-values">Earns</h2>
+      <h2 className="title-values">Incomes</h2>
       <ul className="list">
         {props.items.map(
           (value) =>
-            value.type == "earn" && (
+            value.type == "income" && (
               <li key={value.id} className="list-item">
                 <p className="item-text" id="first-item">
                   {value.origin}
@@ -30,4 +30,4 @@ function ShowEarns(props) {
   );
 }
 
-export default ShowEarns;
+export default ShowIncomes;
